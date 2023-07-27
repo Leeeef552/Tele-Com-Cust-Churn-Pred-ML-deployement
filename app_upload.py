@@ -191,7 +191,7 @@ def new_models():
         filepath = session.get('filepath')
         if "csv" not in filepath:
             return redirect(url_for('index'))
-
+        
         df = process_files(filepath)
 
         # Get the selected model option
@@ -221,9 +221,10 @@ def new_models():
             predictions = model.predict(df)
             func = np.vectorize(churn)
             predictions = func(predictions)
+
         if len(predictions) == 0:
             return redirect(url_for('home'))
-        
+
         # Add predictions column to DataFrame
         original_df = pd.read_csv(filepath)
         original_df = original_df['customerID'].to_frame()
