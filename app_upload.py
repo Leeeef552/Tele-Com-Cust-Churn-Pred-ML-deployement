@@ -146,14 +146,14 @@ def train_models():
     y = 'uploads/test.csv'
     df = knn(x,y,model_performance)
     print("##----------knn done----------(1/5 models trained)")
-    # df = logistic(x,y,df)
-    # print("##----------logistic regression done----------(2/5 models trained)")
-    # df = random_forest(x,y,df)
-    # print("##----------random forest done----------(3/5 models trained)")
-    # df = SVM(x,y,df)
-    # print("##----------svm done----------(4/5 models trained)")
-    # df = tensorflow_nn(x,y,df)
-    # print("##-----------TF done----------(5/5 models trained)")
+    df = logistic(x,y,df)
+    print("##----------logistic regression done----------(2/5 models trained)")
+    df = random_forest(x,y,df)
+    print("##----------random forest done----------(3/5 models trained)")
+    df = SVM(x,y,df)
+    print("##----------svm done----------(4/5 models trained)")
+    df = tensorflow_nn(x,y,df)
+    print("##-----------TF done----------(5/5 models trained)")
     df = df.style.background_gradient(cmap='RdYlBu_r').format({
         'Accuracy': '{:.2%}',
         'Precision': '{:.2%}',
