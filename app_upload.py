@@ -66,7 +66,7 @@ def ones_and_zeros(x):
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# preprocessing fixed code
+# preprocessing code
 def process_files(file_path):
     df = pd.read_csv(file_path)
     #one hot encoding for categorical variables

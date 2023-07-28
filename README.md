@@ -4,7 +4,7 @@ Kaggle Dataset ML with deployment
 Dataset from Kaggle: https://www.kaggle.com/datasets/datazng/telecom-company-churn-rate-call-center-data
 
 History:
-- Project was done during attatchment at Oak Consulting Singapore (A Beyond Limits Company) from Jun 23 - Jul 23
+- Project was done during attatchment at Oak Consulting Singapore (A Beyond Limits Company) from 23 Jun - 28 Jul
 
 References:
 - https://www.youtube.com/@DigitalSreeni
