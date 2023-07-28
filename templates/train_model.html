@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
     body {
       background-color: #ffffff;
@@ -182,7 +180,6 @@
         border-radius: 0.50rem;
         padding: 10px 40px;
         margin-top: 2%;
-        margin-bottom: 1%;
     }
 
     .alert-overlay {
@@ -219,7 +216,28 @@
       max-width: 400px; /* Set the maximum width of the image to prevent it from exceeding this size */
     }
 
+    .wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height:fit-content;
+    }
+
+    .progressBar-container{
+      width: 300px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #progressBar {
+      background-color: #f1941b;
+    }
+
+    #progressBar::-webkit-progress-value {
+      background-color: #f1941b;
+    }
   </style>
+
 <div class="header-container">
   <img class="logo" src="https://media.licdn.com/dms/image/C560BAQH3_QXt5HsuTA/company-logo_200_200/0/1658998880207?e=1697068800&v=beta&t=HfCTPrhaoU9zoEbgr9kCUAQjXAgCZp3hzClussNy1sM" alt="Logo">
   <h1>Tele Communication Customer Churn Prediction</h1>
@@ -253,11 +271,42 @@ function myFunction() {
       <img class="logo2" src="https://slitayem.github.io/img/blog/2020-08-04/churn.png" alt="logo2">
       <h2>Train Models</h2>
       <form method="POST" action="{{ url_for('train_models') }}">
-        <button class="upload-button" type="submit">Train Models</button>
+        <button class="upload-button" type="submit" onclick="start(0)">Train Models</button>
       </form>
       <form method="GET" action="{{ url_for('submit_train') }}">
         <button class="upload-button" type="submit">Submit New Train</button>
       </form>
     </div>
+    <div class = "wrapper">
+      <div class = "progressBar-container">
+      <progress id="progressBar" value="0" max="100" style="width:300px; display:none;"></progress>
+      <span id="status"></span>
+      <h3 id="finalMessage"></h3>
+      </div>
+    </div>
+    <script>
+        function start(al) {
+        // Show the progress bar when the button is clicked
+        var progressBar = document.getElementById('progressBar');
+        progressBar.style.display = "block";
+
+        var status = document.getElementById('status');
+        status.innerHTML = al + "%";
+        progressBar.value = al;
+        al++;
+
+        var sim = setTimeout(function() {
+          start(al);
+        }, 150);
+
+        if (al > 100) {
+          status.innerHTML = "100%";
+          progressBar.value = 100;
+          clearTimeout(sim);
+          var finalMessage = document.getElementById('finalMessage');
+          finalMessage.innerHTML = "Training Complete";
+        }
+      }
+    </script>
 </body>
 </html>
